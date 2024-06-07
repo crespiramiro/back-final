@@ -48,11 +48,12 @@ const productsPut = async (req, res) => {
     const productId = req.params.id;
     const newData = req.body;
     
+    // Asegúrate de incluir el campo updatedAt con la fecha y hora actual
+    newData.updatedAt = new Date();
+
     // Utiliza el método findOneAndUpdate para buscar el producto por su ID y actualizarlo con los nuevos datos
     const updatedProduct = await Product.findOneAndUpdate({ _id: productId }, newData, { new: true });
 
-    console.log(productId, 'Id del producto');
-    
     // Verifica si se encontró y actualizó el producto
     if (!updatedProduct) {
       return res.status(404).json({ message: 'Producto no encontrado' });
@@ -63,6 +64,7 @@ const productsPut = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 const productsDelete = async (req, res) => {
   try {
