@@ -1,4 +1,5 @@
-import Routes from "@/Routes"
+'use client'
+import Routes from "@/Routes";
 
 export default function Home() {
   return (
