@@ -1,16 +1,16 @@
 const mongoose = require('mongoose')
 
 const dbConnection = async () => {
-
     try {
-
-        await mongoose.connect('mongodb+srv://crespiramiro:iS7yyuxVJazpsOgn@cluster1.bk1uykl.mongodb.net/')
-        console.log('Database succesfully connected');
-    }
-
-    catch (error) {
-        throw new Error ('error initializing the db')
+        await mongoose.connect(process.env.MONGODB_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        console.log('Database successfully connected');
+    } catch (error) {
+        throw new Error('Error initializing the DB');
     }
 };
+
 
 module.exports = dbConnection;
