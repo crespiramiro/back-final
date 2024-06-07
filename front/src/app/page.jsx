@@ -1,12 +1,13 @@
-'use client'
-import Routes from "@/Routes";
+import AddProduct from "@/components/AddProduct";
+import ProductList from "./products/page";
+
 
 export default function Home() {
   return (
-        <div>
-          <h1>Mi Aplicación</h1>
-          <Routes />
-        </div>
-      );
-    };
-  
+  <main className="ml-16" >
+    <h1 className="mb-12 mt-12" >Bienvenido a gestor de stock</h1>
+    <ProductList/>
+    <AddProduct />
+  </main>
+  )
+}
